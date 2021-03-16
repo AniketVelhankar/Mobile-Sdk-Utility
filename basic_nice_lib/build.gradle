@@ -1,0 +1,85 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'com.jfrog.bintray'
+    id 'com.github.dcendents.android-maven'
+}
+
+ext {
+    supportLibVersion = '30.0.0'
+
+    //Bintray Configuration
+    bintrayRepo = 'NICE-Mobile-SDK'
+    bintrayName = 'com.example.basic_nice_lib'
+
+    publishedGroupId = 'com.example.basic_nice_lib'
+    libraryVersion = '0.1'
+
+    libraryName = 'NICE-Mobile-SDK'
+    libraryDescription = 'Mobile sdk for in app surveys'
+
+    gitUrl = 'https://github.com/AniketVelhankar/Mobile-Sdk-Utility'
+
+    developerId = 'aniketvelhankar'
+    developerName = 'Aniket Velhankar'
+    developerEmail = 'aniket.velhankar@gmail.com'
+
+    licenseName = 'GNU General Public License version 3'
+    licenseUrl = 'https://www.gnu.org/licenses/gpl-3.0.en.html'
+    allLicenses = ["GPL-3.0"]
+
+    //Bintray Credentials
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+    bintrayUsername = properties.getProperty('BINTRAY_USERNAME')
+    bintrayUserOrg = properties.getProperty('BINTRAY_ORG')
+    bintrayApiKey = properties.getProperty('BINTRAY_API_KEY')
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'com.android.volley:volley:1.1.1'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.xeoh.android:checkboxgroup:1.0.1'
+}
+
+apply from: 'bintray.script'
