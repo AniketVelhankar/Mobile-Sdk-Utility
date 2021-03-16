@@ -36,7 +36,7 @@ class Survey_Library {
         // VOLLEY GET API CODE
         // --- Volley Code for initiate API Starts
 
-        val url="https://qa15app.3gqa.satmetrix.com/npxapi/conversation/v1.0/initiate?selectedLanguage=en_US"
+        val url="https://"
        // val url = Base64.decode(getconvAPI(), Base64.DEFAULT).toString()
         val jsonObjectRequest =object : JsonObjectRequest(
             Method.POST, url, user_info,
@@ -62,7 +62,6 @@ class Survey_Library {
             {
                 val headers = HashMap<String, String>()
                 headers["Authorization"] = "Basic" 
-                headers["tenantId"] = "JHQIOPU"
                 return headers
             }
 

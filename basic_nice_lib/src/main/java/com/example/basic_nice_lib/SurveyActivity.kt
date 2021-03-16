@@ -225,7 +225,7 @@ class SurveyActivity : AppCompatActivity() {
         //external fun getreplyAPI(): String
 
         Log.d("RequestForSecond", reqobj.toString(1))
-         val url="https://qa15app.3gqa.satmetrix.com/npxapi/conversation/v1.0/reply"
+         val url="https"
         //val url = Base64.decode(getreplyAPI(), Base64.DEFAULT).toString()
         val jsonObjectRequest =object : JsonObjectRequest(
             Method.POST, url, reqobj,
@@ -243,7 +243,6 @@ class SurveyActivity : AppCompatActivity() {
         {
             val headers = HashMap<String, String>()
             headers["Authorization"] = "Basic"
-            headers["tenantId"] = "YUQLOUP"
             return headers
         }
 
